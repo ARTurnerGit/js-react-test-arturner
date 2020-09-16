@@ -2,6 +2,7 @@ import React from "react";
 import LabelledInput, {
   LabelledInputTextType,
   LabelledInputSubmitType,
+  LabelledInputEmailType,
 } from "../../components/LabelledInput";
 
 function Form({ children }) {
@@ -21,7 +22,7 @@ function Form({ children }) {
     >
       <LabelledInput label={"First Name*"} type={LabelledInputTextType} />
       <LabelledInput label={"Last Name*"} type={LabelledInputTextType} />
-      <LabelledInput label={"E-mail*"} type={LabelledInputTextType} />
+      <LabelledInput label={"E-mail*"} type={LabelledInputEmailType} />
       <LabelledInput label={"Phone number*"} type={LabelledInputTextType} />
       <LabelledInput label={"Address"} type={LabelledInputTextType} />
       <LabelledInput label={"Message*"} type={LabelledInputTextType} />
