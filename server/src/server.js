@@ -5,6 +5,7 @@ const path = require("path");
 const { db } = require("../db/dbConfig");
 const cors = require("cors");
 const { testRouter } = require("../routers/test");
+const { createRouter } = require("../routers/create");
 const { invalidPathRouter } = require("../errors");
 
 const app = express();
@@ -30,6 +31,9 @@ db.connect((err) => {
 
 // Test
 app.use("/", testRouter);
+
+// Create
+app.use("/create", createRouter);
 
 // An API endpoint to store form post data
 app.post("/create", (req, res) => {

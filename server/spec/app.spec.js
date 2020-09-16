@@ -17,4 +17,20 @@ describe("APP", () => {
         expect(body.msg).to.equal("path not found");
       });
   });
+  describe("/create", () => {
+    describe("INVALID METHODS", () => {
+      it("405: msg 'invalid method' if any method other than post used", () => {
+        let invalidMethods = ["get", "put", "patch", "delete"];
+        let requests = invalidMethods.map((method) => {
+          return request(app)
+            [method]("/create")
+            .expect(405)
+            .then(({ body }) => {
+              expect(body.msg).to.equal("invalid method");
+            });
+        });
+        return Promise.all(requests);
+      });
+    });
+  });
 });
