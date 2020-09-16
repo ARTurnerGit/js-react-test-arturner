@@ -32,24 +32,28 @@ function Form({ children }) {
         type={LabelledInputTextType}
         controlValue={first_name}
         setControlValue={setFirst_name}
+        required={true}
       />
       <LabelledInput
         label={"Last Name*"}
         type={LabelledInputTextType}
         controlValue={last_name}
         setControlValue={setLast_name}
+        required={true}
       />
       <LabelledInput
         label={"E-mail*"}
         type={LabelledInputEmailType}
         controlValue={email}
         setControlValue={setEmail}
+        required={true}
       />
       <LabelledInput
         label={"Phone number*"}
         type={LabelledInputTextType}
         controlValue={phone}
         setControlValue={setPhone}
+        required={true}
       />
       <LabelledInput
         label={"Address"}
@@ -62,6 +66,7 @@ function Form({ children }) {
         type={LabelledInputTextType}
         controlValue={message_text}
         setControlValue={setMessage_text}
+        required={true}
       />
       <LabelledInput type={LabelledInputSubmitType} />
     </form>
