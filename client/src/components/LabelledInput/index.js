@@ -1,12 +1,10 @@
-import React from 'react'
+import React from "react";
 
-export const LabelledInputTextType = 'text'
-export const LabelledInputSubmitType = 'submit'
+export const LabelledInputTextType = "text";
+export const LabelledInputSubmitType = "submit";
+export const LabelledInputEmailType = "email";
 
-function LabelledInput({ 
-  type = LabelledInputTextType,
-  label = false,
-}) {
+function LabelledInput({ type = LabelledInputTextType, label = false }) {
   return (
     <>
       {label && <label htmlFor="">{label}</label>}
