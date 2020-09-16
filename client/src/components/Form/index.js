@@ -4,17 +4,45 @@ import LabelledInput, {
   LabelledInputSubmitType,
   LabelledInputEmailType,
 } from "../../components/LabelledInput";
+import axios from "axios";
 
-function Form({ children }) {
+function Form(props) {
   const [first_name, setFirst_name] = useState("");
   const [last_name, setLast_name] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [message_text, setMessage_text] = useState("");
+  const [userMessage, setUserMessage] = useState(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const first_nameIsValid = first_name.length > 0 && !/\d/.test(first_name);
+    const last_nameIsValid = last_name.length > 0 && !/\d/.test(last_name);
+    const phoneIsValid = phone.length > 0 && !/\D/.test(phone);
+    const message_textIsValid = message_text.length > 0;
+
+    if (
+      first_nameIsValid &&
+      last_nameIsValid &&
+      phoneIsValid &&
+      message_textIsValid
+    ) {
+      const body = {
+        first_name,
+        last_name,
+        email,
+        phone,
+        address,
+        message_text,
+      };
+      console.log("submitting data");
+      axios.post("http://localhost:8080/create", body).then((res) => {
+        console.dir(res);
+      });
+    } else {
+      console.log("something is invalid");
+    }
   };
 
   return (
