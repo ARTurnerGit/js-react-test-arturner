@@ -1,15 +1,5 @@
 # Add personal notes here:
 
-Please see below or the file INITIAL_README.md for the original task.
-
-1. If required, please follow the setup instructions as laid down in `docs/setup.md`.
-2. In addition, please edit the `server/package.json` as follows:
-
-- in the `start-mysql` script, please amend:
-  - `-v ~/Desktop/personal-projects/js-react-test-arturner/server/db/sql-scripts:/docker-entrypoint-initdb.d/`
-- to point to your version of this repository:
-  - `-v ~/<path to your repository>/js-react-test-arturner/server/db/sql-scripts:/docker-entrypoint-initdb.d/`
-
 # Your Challenge
 
 Your challenge is a mix of tasks focussed around the day to day role of a JavaScript Node + React developer.
