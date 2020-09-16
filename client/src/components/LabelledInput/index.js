@@ -10,6 +10,7 @@ function LabelledInput({
   controlValue,
   setControlValue,
   required,
+  invalidInput,
 }) {
   if (type === "submit") {
     return (
@@ -28,6 +29,11 @@ function LabelledInput({
         onChange={(e) => setControlValue(e.target.value)}
         required={required}
       />
+      {invalidInput && invalidInput.test(controlValue) && (
+        <p>
+          <em>invalid input</em>
+        </p>
+      )}
     </>
   );
 }

@@ -33,6 +33,7 @@ function Form({ children }) {
         controlValue={first_name}
         setControlValue={setFirst_name}
         required={true}
+        invalidInput={/\d/}
       />
       <LabelledInput
         label={"Last Name*"}
