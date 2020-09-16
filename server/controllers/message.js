@@ -14,5 +14,11 @@ exports.postMessageController = (req, res) => {
 };
 
 exports.getAllMessagesController = (req, res) => {
-  selectAllMessagesModel(res);
+  selectAllMessagesModel()
+    .then(({ results, fields }) => {
+      return res.status(200).json({ results });
+    })
+    .catch((err) => {
+      return res.status(400).send({ msg: "Bad request" });
+    });
 };
