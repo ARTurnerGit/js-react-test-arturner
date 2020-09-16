@@ -1,14 +1,18 @@
-import React from 'react'
+import React from "react";
+import LabelledInput, {
+  LabelledInputTextType,
+  LabelledInputSubmitType,
+} from "../../components/LabelledInput";
 
 function Form({ children }) {
-
   const handleSubmit = (event) => {
     event.preventDefault();
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit}>
-      {children}
+      <LabelledInput label={"Name:"} type={LabelledInputTextType} />
+      <LabelledInput type={LabelledInputSubmitType} />
     </form>
   );
 }
