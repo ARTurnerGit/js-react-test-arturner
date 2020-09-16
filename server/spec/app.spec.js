@@ -32,5 +32,24 @@ describe("APP", () => {
         return Promise.all(requests);
       });
     });
+    describe("POST", () => {
+      it("201: msg 'Message successfully sent' with successful post", () => {
+        let body = {
+          first_name: "Tester",
+          last_name: "One",
+          email: "Test@email.com",
+          phone: "0123400",
+          message_text: "This is a test from Mocha",
+        };
+        return request(app)
+          .post("/create")
+          .send(body)
+          .expect(201)
+          .then(({ body }) => {
+            expect(body).to.have.key("msg");
+            expect(body.msg).to.equal("Message successfully sent");
+          });
+      });
+    });
   });
 });
