@@ -31,8 +31,8 @@ function App() {
         <h1>Contact Us</h1>
         <p>{data.message}</p>
       </header>
-      <section>
-        <Router>
+      <section style={{ display: "flex", justifyContent: "center" }}>
+        <Router style={{ width: "70%" }}>
           <Form path="/" />
         </Router>
       </section>
