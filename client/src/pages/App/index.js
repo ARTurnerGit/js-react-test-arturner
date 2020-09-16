@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Form from "../../components/Form";
 import "./App.css";
+import { Router } from "@reach/router";
 
 function App() {
   const [data, setData] = useState({
@@ -30,7 +31,11 @@ function App() {
         <h1>Contact Us</h1>
         <p>{data.message}</p>
       </header>
-      <Form />
+      <section>
+        <Router>
+          <Form path="/" />
+        </Router>
+      </section>
     </div>
   );
 }
