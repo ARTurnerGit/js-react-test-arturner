@@ -5,6 +5,7 @@ const path = require("path");
 const { db } = require("../db/dbConfig");
 const cors = require("cors");
 const { testRouter } = require("../routers/test");
+const { invalidPathRouter } = require("../errors");
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -41,3 +42,7 @@ app.post("/create", (req, res) => {
     },
   });
 });
+
+app.use("/*", invalidPathRouter);
+
+module.exports = app;
