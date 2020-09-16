@@ -1,7 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
-const mysql = require("mysql");
+// const mysql = require("mysql");
+const { db } = require("../db/dbConfig");
 const cors = require("cors");
 
 const PORT = process.env.PORT || 8080;
@@ -18,14 +19,14 @@ app.use(cors());
 
 //CREATE CONNECTION
 // @see documentenation at https://github.com/mysqljs/mysql
-const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
-  port: 3307,
-  insecureAuth: true,
-});
+// const db = mysql.createConnection({
+//   host: process.env.DB_HOST,
+//   user: process.env.DB_USER,
+//   password: process.env.DB_PASSWORD,
+//   database: process.env.DB_DATABASE,
+//   port: 3307,
+//   insecureAuth: true,
+// });
 
 //CONNECT
 db.connect((err) => {
