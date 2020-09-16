@@ -4,6 +4,10 @@ const request = require("supertest");
 const app = require("../src/server");
 const { db } = require("../db/dbConfig");
 
+after(() => {
+  return db.destroy();
+});
+
 describe("APP", () => {
   it("404: msg 'path not found' if non-existant path is used", () => {
     return request(app)

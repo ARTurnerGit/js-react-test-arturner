@@ -7,7 +7,6 @@ const cors = require("cors");
 const { testRouter } = require("../routers/test");
 const { invalidPathRouter } = require("../errors");
 
-const PORT = process.env.PORT || 8080;
 const app = express();
 
 //STATIC FOLDER
@@ -25,10 +24,9 @@ db.connect((err) => {
   // console.log("MySQL Connected...");
 });
 
-// Start Express listening
-app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server started on port ${PORT}`);
+// });
 
 // Test
 app.use("/", testRouter);
