@@ -116,4 +116,20 @@ describe("APP", () => {
       });
     });
   });
+  describe("/admin", () => {
+    describe("INVALID METHODS", () => {
+      it("405: msg 'invalid method' if any method other than get used", () => {
+        let invalidMethods = ["post", "put", "patch", "delete"];
+        let requests = invalidMethods.map((method) => {
+          return request(app)
+            [method]("/create")
+            .expect(405)
+            .then(({ body }) => {
+              expect(body.msg).to.equal("invalid method");
+            });
+        });
+        return Promise.all(requests);
+      });
+    });
+  });
 });
