@@ -141,6 +141,15 @@ describe("APP", () => {
             expect(body.results).to.be.an("array");
           });
       });
+      // this test is to check the initial seeding and will only pass if run before any data has been added to the database
+      // it("200: returns the initial seeded values", () => {
+      //   return request(app)
+      //     .get("/admin")
+      //     .expect(200)
+      //     .then(({ body }) => {
+      //       expect(body.results.length).to.equal(5);
+      //     });
+      // });
     });
   });
 });
