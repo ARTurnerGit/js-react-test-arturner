@@ -50,6 +50,70 @@ describe("APP", () => {
             expect(body.msg).to.equal("Message successfully sent");
           });
       });
+      it("400: msg 'Bad request' if missing first_name", () => {
+        let body = {
+          last_name: "One",
+          email: "Test@email.com",
+          phone: "0123400",
+          message_text: "This is a test from Mocha",
+        };
+        return request(app)
+          .post("/create")
+          .send(body)
+          .expect(400)
+          .then(({ body }) => {
+            expect(body).to.have.key("msg");
+            expect(body.msg).to.equal("Bad request");
+          });
+      });
+      it("400: msg 'Bad request' if missing last_name", () => {
+        let body = {
+          first_name: "Tester",
+          email: "Test@email.com",
+          phone: "0123400",
+          message_text: "This is a test from Mocha",
+        };
+        return request(app)
+          .post("/create")
+          .send(body)
+          .expect(400)
+          .then(({ body }) => {
+            expect(body).to.have.key("msg");
+            expect(body.msg).to.equal("Bad request");
+          });
+      });
+      it("400: msg 'Bad request' if missing email", () => {
+        let body = {
+          first_name: "Tester",
+          last_name: "something",
+          phone: "0123400",
+          message_text: "This is a test from Mocha",
+        };
+        return request(app)
+          .post("/create")
+          .send(body)
+          .expect(400)
+          .then(({ body }) => {
+            expect(body).to.have.key("msg");
+            expect(body.msg).to.equal("Bad request");
+          });
+      });
+      it("400: msg 'Bad request' if missing message_text", () => {
+        let body = {
+          first_name: "Tester",
+          last_name: "something",
+          email: "something",
+          phone: "0123400",
+        };
+        return request(app)
+          .post("/create")
+          .send(body)
+          .expect(400)
+          .then(({ body }) => {
+            expect(body).to.have.key("msg");
+            expect(body.msg).to.equal("Bad request");
+          });
+      });
     });
   });
 });
