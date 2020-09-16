@@ -131,5 +131,16 @@ describe("APP", () => {
         return Promise.all(requests);
       });
     });
+    describe("GET", () => {
+      it("200: returns json, key of results, value is an array", () => {
+        return request(app)
+          .get("/admin")
+          .expect(200)
+          .then(({ body }) => {
+            expect(body).to.have.key("results");
+            expect(body.results).to.be.an("array");
+          });
+      });
+    });
   });
 });

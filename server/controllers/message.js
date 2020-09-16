@@ -1,4 +1,7 @@
-const { insertMessageModel } = require("../models/message");
+const {
+  insertMessageModel,
+  selectAllMessagesModel,
+} = require("../models/message");
 
 exports.postMessageController = (req, res) => {
   insertMessageModel(req.body)
@@ -11,5 +14,5 @@ exports.postMessageController = (req, res) => {
 };
 
 exports.getAllMessagesController = (req, res) => {
-  console.log("here");
+  selectAllMessagesModel(res);
 };

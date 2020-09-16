@@ -28,3 +28,14 @@ exports.insertMessageModel = ({
   let inputData = [first_name, last_name, email, phone, address, message_text];
   return promisifiedQuery(sqlString, inputData);
 };
+
+exports.selectAllMessagesModel = (res) => {
+  let sqlString = "SELECT * FROM message";
+  db.query(sqlString, (err, results, fields) => {
+    if (err) {
+      return res.status(400).send({ msg: "Bad request" });
+    }
+    console.log({ results });
+    return res.status(200).json({ results });
+  });
+};
