@@ -1,0 +1,4 @@
+INSERT INTO message (message_first_name, message_last_name, message_email, message_phone, message_address, message_text) VALUES ('Tony', 'Soprano', 'Tony@Soprano.com', '0123', 'USA', 'I have an offer you can not refuse');
+INSERT INTO message (message_first_name, message_last_name, message_email, message_phone, message_address, message_text) VALUES ('Carmella', 'Soprano', 'Carmella@Soprano.com', '0456', 'USA', 'Has anybody seen Tony?');
+INSERT INTO message (message_first_name, message_last_name, message_email, message_phone, message_address, message_text) VALUES ('AJ', 'Soprano', 'AJ@Soprano.com', '0789', 'USA', 'My parents embarrass me.');
+INSERT INTO message (message_first_name, message_last_name, message_email, message_phone, message_address, message_text) VALUES ('Meadow', 'Soprano', 'Meadow@Soprano.com', '0101', 'Columbia University', 'I am going my own way');
