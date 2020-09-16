@@ -41,6 +41,7 @@ function Form({ children }) {
         controlValue={last_name}
         setControlValue={setLast_name}
         required={true}
+        invalidInput={/\d/}
       />
       <LabelledInput
         label={"E-mail*"}
@@ -55,6 +56,7 @@ function Form({ children }) {
         controlValue={phone}
         setControlValue={setPhone}
         required={true}
+        invalidInput={/\D/}
       />
       <LabelledInput
         label={"Address"}

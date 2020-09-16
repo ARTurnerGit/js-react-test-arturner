@@ -28,6 +28,13 @@ function LabelledInput({
         value={controlValue}
         onChange={(e) => setControlValue(e.target.value)}
         required={required}
+        style={
+          invalidInput &&
+          controlValue.length > 0 &&
+          invalidInput.test(controlValue)
+            ? { border: "1px solid red" }
+            : { border: "1px solid black" }
+        }
       />
       {invalidInput && invalidInput.test(controlValue) && (
         <p>
