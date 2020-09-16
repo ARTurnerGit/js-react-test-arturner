@@ -17,6 +17,7 @@ function Form(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     const first_nameIsValid = first_name.length > 0 && !/\d/.test(first_name);
     const last_nameIsValid = last_name.length > 0 && !/\d/.test(last_name);
     const phoneIsValid = phone.length > 0 && !/\D/.test(phone);
@@ -36,12 +37,27 @@ function Form(props) {
         address,
         message_text,
       };
-      console.log("submitting data");
+      setUserMessage("Submitting data");
       axios.post("http://localhost:8080/create", body).then((res) => {
-        console.dir(res);
+        if (res.status === 201) {
+          setUserMessage(res.data.msg);
+        } else {
+          setUserMessage("There seems to be a problem, please try again");
+        }
+        setFirst_name("");
+        setLast_name("");
+        setEmail("");
+        setPhone("");
+        setAddress("");
+        setMessage_text("");
+        setTimeout(() => {
+          setUserMessage(null);
+        }, 3000);
       });
     } else {
-      console.log("something is invalid");
+      setUserMessage(
+        "Form contains invalid data, please correct this before submitting"
+      );
     }
   };
 
@@ -55,6 +71,11 @@ function Form(props) {
         justifyContent: "space-evenly",
       }}
     >
+      {userMessage && (
+        <p>
+          <em>{userMessage}</em>
+        </p>
+      )}
       <LabelledInput
         label={"First Name*"}
         type={LabelledInputTextType}
