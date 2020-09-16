@@ -122,7 +122,7 @@ describe("APP", () => {
         let invalidMethods = ["post", "put", "patch", "delete"];
         let requests = invalidMethods.map((method) => {
           return request(app)
-            [method]("/create")
+            [method]("/admin")
             .expect(405)
             .then(({ body }) => {
               expect(body.msg).to.equal("invalid method");

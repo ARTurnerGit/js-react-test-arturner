@@ -9,3 +9,7 @@ exports.postMessageController = (req, res) => {
       return res.status(400).send({ msg: "Bad request" });
     });
 };
+
+exports.getAllMessagesController = (req, res) => {
+  console.log("here");
+};
