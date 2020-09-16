@@ -1,5 +1,6 @@
 const mysql = require("mysql");
 
+// @see documententation at https://github.com/mysqljs/mysql
 exports.db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,

@@ -4,6 +4,7 @@ const path = require("path");
 // const mysql = require("mysql");
 const { db } = require("../db/dbConfig");
 const cors = require("cors");
+const { testRouter } = require("../routers/test");
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -17,21 +18,10 @@ app.use(bodyParser.json());
 // Deal with CORS
 app.use(cors());
 
-//CREATE CONNECTION
-// @see documentenation at https://github.com/mysqljs/mysql
-// const db = mysql.createConnection({
-//   host: process.env.DB_HOST,
-//   user: process.env.DB_USER,
-//   password: process.env.DB_PASSWORD,
-//   database: process.env.DB_DATABASE,
-//   port: 3307,
-//   insecureAuth: true,
-// });
-
 //CONNECT
 db.connect((err) => {
   if (err) throw err;
-  console.log("MySQL Connected...");
+  // console.log("MySQL Connected...");
 });
 
 // Start Express listening
@@ -40,27 +30,7 @@ app.listen(PORT, () => {
 });
 
 // Test
-
-// Test to make sure the API can talk to React
-app.get("/", (req, res) => {
-  return res.json({
-    status: res.statusCode,
-    data: {
-      message: "API Active",
-    },
-  });
-});
-
-// An echo, to help with debugging
-app.post("/", (req, res) => {
-  return res.json({
-    status: res.statusCode,
-    data: {
-      message: "ECHO!",
-      posted: req.body,
-    },
-  });
-});
+app.use("/", testRouter);
 
 // An API endpoint to store form post data
 app.post("/create", (req, res) => {
