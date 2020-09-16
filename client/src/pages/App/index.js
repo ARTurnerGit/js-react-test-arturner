@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Form from "../../components/Form";
+import Admin from "../../components/Admin";
 import "./App.css";
 import { Router } from "@reach/router";
 
@@ -34,6 +35,7 @@ function App() {
       <section style={{ display: "flex", justifyContent: "center" }}>
         <Router style={{ width: "70%" }}>
           <Form path="/" />
+          <Admin path="/admin" />
         </Router>
       </section>
     </div>
