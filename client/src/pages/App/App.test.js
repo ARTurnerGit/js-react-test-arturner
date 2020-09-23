@@ -4,17 +4,8 @@ import "@testing-library/jest-dom/extend-expect";
 import App from "./index";
 
 describe("RENDER", () => {
-  test("renders the header and input boxes on /home", () => {
-    const { getByLabelText, getByTestId, getByText } = render(<App />);
+  test("renders the header", () => {
+    const { getByText } = render(<App />);
     getByText("Contact Us");
-
-    getByLabelText("First Name*");
-    getByLabelText("Last Name*");
-    getByLabelText("E-mail*");
-    getByLabelText("Phone number*");
-    getByLabelText("Address");
-    getByLabelText("Message*");
-
-    getByTestId("submit");
   });
 });
