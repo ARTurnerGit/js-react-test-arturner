@@ -1,5 +1,6 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
+import "@testing-library/jest-dom/extend-expect";
 import {
   Router,
   createHistory,
@@ -8,18 +9,32 @@ import {
 } from "@reach/router";
 import App from "./index";
 
-test("renders the header and input boxes on /home", () => {
-  const { getByLabelText, getByTestId, getByText } = render(<App />);
-  getByText("Contact Us");
+describe("RENDER", () => {
+  test("renders the header and input boxes on /home", () => {
+    const { getByLabelText, getByTestId, getByText } = render(<App />);
+    getByText("Contact Us");
 
-  getByLabelText("First Name*");
-  getByLabelText("Last Name*");
-  getByLabelText("E-mail*");
-  getByLabelText("Phone number*");
-  getByLabelText("Address");
-  getByLabelText("Message*");
+    getByLabelText("First Name*");
+    getByLabelText("Last Name*");
+    getByLabelText("E-mail*");
+    getByLabelText("Phone number*");
+    getByLabelText("Address");
+    getByLabelText("Message*");
 
-  getByTestId("submit");
+    getByTestId("submit");
+  });
 });
 
-test("renders the header and mocked data on /admin", () => {});
+describe("INPUT VALIDITY", () => {
+  test("error message for invalid first name input", () => {
+    const { getByLabelText, queryByText } = render(<App />);
+    const input = getByLabelText("First Name*");
+    fireEvent.change(input, { target: { value: "name" } });
+    expect(queryByText("invalid")).not.toBeInTheDocument();
+
+    fireEvent.change(input, { target: { value: "n4m3" } });
+    expect(queryByText("invalid input")).toBeInTheDocument();
+  });
+});
+
+// test("renders the header and mocked data on /admin", () => {});
