@@ -120,7 +120,7 @@ function Form(props) {
         setControlValue={setMessage_text}
         required={true}
       />
-      <LabelledInput type={LabelledInputSubmitType} />
+      <LabelledInput type={LabelledInputSubmitType} testId="submit" />
     </form>
   );
 }

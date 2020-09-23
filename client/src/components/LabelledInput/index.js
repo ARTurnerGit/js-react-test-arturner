@@ -11,11 +11,12 @@ function LabelledInput({
   setControlValue,
   required,
   invalidInput,
+  testId,
 }) {
   if (type === "submit") {
     return (
       <>
-        <input id={type} type={type} />
+        <input id={type} type={type} data-testid={testId} />
       </>
     );
   }
