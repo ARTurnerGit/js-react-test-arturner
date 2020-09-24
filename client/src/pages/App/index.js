@@ -12,13 +12,17 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch("http://localhost:8080/").then((res) =>
-        res.json()
-      );
-      setData({
-        message: data.data.message,
-        fetched: true,
-      });
+      try {
+        const data = await fetch("http://localhost:8080/").then((res) =>
+          res.json()
+        );
+        setData({
+          message: data.data.message,
+          fetched: true,
+        });
+      } catch (e) {
+        return null;
+      }
     };
 
     if (!data.fetched) {
